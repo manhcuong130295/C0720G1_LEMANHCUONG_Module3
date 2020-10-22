@@ -1,89 +1,60 @@
-create database BTVN;
-use BTVN;
-create table  Categories(
-idCategorie int auto_increment,
-constraint PK_Categories primary key (idCategorie) ,
-name nvarchar(50) not null unique,
+create  database baitap;
+use baitap;
+create table danhmuc(
+ma_loaisach int auto_increment,
+constraint PK_Categories primary key (ma_loaisach) ,
+loaisach nvarchar(50) not null unique,
 Description nvarchar(500)
 );
-create table  Suppliers(
-idSuppliers int auto_increment,
-constraint PK_Suppliers primary key(idSuppliers),
-nameSuppliers nvarchar(100) not null,
-email varchar(50) not null unique ,
-phoneNumber varchar(50),
-address nvarchar(500)
-);
-create table Customers(
-idCustomer varchar(50) ,
-constraint PK_Customers primary key(idCustomer),
-firstName nvarchar(50) not null,
-lastName nvarchar(50) not null,
-phoneNumber varchar(50),
-address nvarchar(500) not null,
-email varchar(50) not null unique ,
-birthDay datetime 
-);
-create table Employees (
-idEmployee varchar(50) ,
-constraint PK_Employees primary key(idEmployee),
-firstName nvarchar(50) not null,
-lastName nvarchar(50) not null,
-phoneNumber varchar(50),
-address nvarchar(500) not null,
-email varchar(50) not null unique ,
-birthDay datetime 
-);
-create table Products(
-idProduct int auto_increment ,
-constraint PK_Products primary key (idProduct),
-nameProduct nvarchar(50) not null,
-umageUrl nvarchar(1000) not null,
-price int check(price>0) not null,
-discount int check (discount between 0 and 100) not null,
-stock int not null,
-idCategorie int not null,
-idSuppliers int not null,
-Description nvarchar(4000)
-);
-create table orders(
-idOrder int auto_increment,
-constraint PK_Orders primary key(idOrder),
-createDay datetime default current_timestamp,
-shippedDate datetime,
-status varchar(50) not null, 
-constraint check(status = 'waiting' or status = 'completed' or status = 'canceled'),
-description nvarchar(4000),
-ShippingAddress nvarchar(500) not null,
-ShippingCity nvarchar(50) not null,
-PaymentType varchar(20) default('Cash') ,
-constraint check(PaymentType='Cash' OR PaymentType='CreditCard'),
-CustomerId varchar(50) not null,
-EmployeeId varchar(50) not null,
-constraint check (shippedDate>=createDay)
-);
-create table OrderDetails(
-id int auto_increment,
-constraint PK_OrderDetails primary key(id),
-idOder int not null,
-idProduct int not null,
-quanity int  not null
-);
-use btvn;
-alter table Products
-add constraint FK_Categories_Products foreign key(idCategorie ) references categories(idCategorie);
 
-alter table Products
-add constraint FK_Suppliers_Products foreign key(idSuppliers) references Suppliers(idSuppliers);
+create table Sach(
+ma_sach int auto_increment,
+constraint PK_Sach primary key(ma_sach),
+ten_sach nvarchar(50) not null,
+nxb nvarchar(50) not null,
+tac_gia nvarchar(50) not null,
+nam_xuat_ban datetime,
+so_lan_xuat_ban int,
+gia_thue int not null,
+anh_sach varchar(4000),
+ma_loaisach int not null
+);
 
-alter table Orders
-add constraint FK_Customer_Orders foreign key(CustomerId) references Customers(idCustomer);
+create table sinhvien(
+maSV nvarchar(50) ,
+constraint PK_thethuvien primary key(maSV),
+tenSv nvarchar(50) not null,
+ngaysinh date not null,
+diachi nvarchar(100),
+email nvarchar(100) not null unique,
+sdt nvarchar(50),
+anhSv varchar(4000)
+);
 
-alter table Orders
-add  constraint FK_Employees_Orders foreign key(EmployeeId) references Employees(idEmployee );
+create table the_muon(
+ma_phieu int auto_increment,
+constraint PK_the_muon primary key(ma_phieu),
+ngay_muon datetime default current_timestamp,
+ngay_tra datetime not null ,
+trangThai nvarchar(50) default('con no'),
+constraint check(trangThai='da tra' or trangThai='con no'),
+constraint check(ngay_tra >= ngay_muon),
+maSV nvarchar(50) not null
+);
 
-alter table  OrderDetails 
-add constraint FK_Orders_OrderDetails foreign key(idOder) references orders(idOrder);
+create table chi_tiet(
+ma_phieu int not null,
+ma_sach int not null
+);
 
-alter table OrderDetails 
-add constraint FK_Products_OrderDetails foreign key(idProduct) references Products(idProduct);
+alter table sach
+add constraint FK_danhmuc_sach foreign key(ma_loaisach) references danhmuc(ma_loaisach);
+
+alter table  the_muon
+add constraint FK_SinhVien_theMuon foreign key(maSV) references sinhvien(maSV);
+
+alter table chi_tiet
+add constraint FK_PhieuMUon_chitiet foreign key(ma_phieu) references the_muon(ma_phieu);
+
+alter table chi_tiet
+add constraint FK_Sach_chitiet foreign key(ma_sach) references Sach(ma_sach);
