@@ -5,4 +5,6 @@ where nhanvien.HoTenNhanVen = ('H%'or'L%'or'P%') and length(nhanvien.HoTenNhanVe
 
 -- yêu cầu 3
 select * from khachhang
-where  khachhang.DiaChi='QT' or  khachhang.DiaChi='DN';
+where  khachhang.DiaChi='QT' or  khachhang.DiaChi='DN' and timediff(current_timestamp,khachhang.Ngaysinh) between 15 and 50;
+
+-- yêu càu 4
