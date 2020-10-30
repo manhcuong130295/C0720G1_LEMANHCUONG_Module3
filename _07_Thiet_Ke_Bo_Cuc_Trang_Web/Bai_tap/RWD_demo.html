@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, Tahoma;
+            color: black;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        #header {
+            background-color: black;
+            width: 100%;
+            height: 5em;
+        }
+
+        #menu ul {
+            height: 100%;
+            width: 30%;
+            float: left;
+            list-style-type: none;
+            background-color: black;
+            text-align: left;
+        }
+
+        #menu li {
+            display: inline-table;
+            margin: 10px 10px 10px 10px;
+        }
+
+        #menu li a {
+            color: white;
+            text-decoration: #FFFFFF;
+        }
+
+        #menu1 {
+            height: 100%;
+            width: 10%;
+            float: right;
+            list-style-type: none;
+            background-color: black;
+            text-align: right;
+        }
+
+        #left_sidebar ul {
+            margin-top: 5%;
+            height: 30em;
+            width: 20%;
+            float: left;
+            list-style-type: none;
+            text-align: center;
+
+        }
+
+        #content {
+            height: 30em;
+            width: 60%;
+            float: left;
+        }
+
+        #right_sidebar {
+            text-align: center;
+            width: 17%;
+            height: 30em;
+            float: left;
+        }
+
+        #footer {
+            text-align: center;
+            clear: both;
+            background-color: black;
+            width: 100%;
+            height: 5em;
+            margin-top: 0;
+
+        }
+        #input input {
+            height: 8em;
+            width: 80%;
+            display: block;
+            text-align: center;
+            margin-top: 5%;
+            margin-left: 20%;
+        }
+        @media screen and (min-width: 600px){
+            #header{
+                max-width: 100%;
+            }
+            #content{
+                width: 60%;
+                float: left;
+            }
+            #left_sidebar{
+                width: 20%;
+                float: left;
+            }
+            #right_sidebar{
+                width: 17%;
+                float: left;
+            }
+            footer{
+                max-width: 100%;
+                clear: both;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div id="header">
+    <div id="menu">
+        <ul>
+            <li><a href="#">Logo</a></li>
+            <li><a href="#">Home </a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div id="menu1">
+            <ul>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div id="left_sidebar">
+    <ul>
+        <li><a style="color: blue" href="#">Link</a></li>
+        <li><a style="color: blue" href="#">Link</a></li>
+        <li><a style="color: blue" href="#">Link</a></li>
+    </ul>
+</div>
+<div id="content">
+    <h1>Welcome</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse efficitur nec orci non commodo. Aenean
+        felis elit, elementum porta fringilla eget, gravida nec velit. Fusce blandit vitae erat id efficitur. Donec
+        dignissim libero et turpis cursus, eu mollis sem luctus. In bibendum at dolor nec lobortis. Nulla metus
+        orci, auctor et odio et, gravida sollicitudin tortor. Praesent eget consequat felis.</p>
+    <hr>
+    <h2>Test</h2>
+</div>
+</div>
+<div id="right_sidebar">
+    <div id="input">
+        <input type="submit" value="Ads">
+        <input type="submit" value="Ads">
+    </div>
+</div>
+<div id="footer">
+    <p style="color: #FFFFFF">Footer text</p>
+</div>
+</body>
+</html>
