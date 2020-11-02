@@ -16,18 +16,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form>
+<form method="post" action="/compute">
     <div class="form-group">
-        <label for="price">Description</label>
+        <label for="description">Description</label>
         <input type="text" class="form-control" id="description" name="description">
     </div>
     <div class="form-group">
-        <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" name="price">
+        <label for="list_price">List Price</label>
+        <input type="text" class="form-control" id="list_price" name="list_price">
     </div>
     <div class="form-group">
-        <label for="discount">Discount</label>
-        <input type="text" class="form-control" id="discount" name="discount">
+        <label for="discount_percent">Discount Percent(%) </label>
+        <input type="text" class="form-control" id="discount_percent" name="discount_percent">
     </div>
     <button type="submit" class="btn btn-primary">Enter</button>
 </form>
