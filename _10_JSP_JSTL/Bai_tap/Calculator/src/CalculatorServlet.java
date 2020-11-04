@@ -17,10 +17,12 @@ public class CalculatorServlet extends HttpServlet {
         PrintWriter writer=response.getWriter();
         writer.println("<html>");
         writer.println("<h1>Result:</h1>");
-       
+        try {
             float result = Calculator.calculator(firstOperand, secondOperand, operator);
             writer.println(firstOperand + " " + operator + " " + secondOperand + " = " + result);
-
+        }catch (ArithmeticException e){
+            writer.println(e.getMessage());
+        }
         writer.println("</html>");
     }
 

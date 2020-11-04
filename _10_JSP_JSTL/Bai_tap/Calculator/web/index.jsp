@@ -28,10 +28,10 @@
         <div class="form-group" style="width: 100px">
             <label>Operator</label>
             <select class="custom-select" name="operator">
-                <option value="1">+</option>
-                <option value="2">-</option>
-                <option value="3">*</option>
-                <option value="4">/</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Calculator</button>
