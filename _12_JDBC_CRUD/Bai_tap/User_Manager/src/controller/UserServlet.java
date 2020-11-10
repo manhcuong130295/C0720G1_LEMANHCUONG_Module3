@@ -95,9 +95,9 @@ public class UserServlet extends HttpServlet {
         }
 
         switch (action) {
-            case "create":
-                showNewForm(request, response);
-                break;
+//            case "create":
+//                showNewForm(request, response);
+//                break;
             case "edit":
                 showEditForm(request, response);
                 break;
@@ -174,15 +174,15 @@ public class UserServlet extends HttpServlet {
 
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/create.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void showNewForm(HttpServletRequest request, HttpServletResponse response) {
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/create.jsp");
+//        try {
+//            requestDispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 }
