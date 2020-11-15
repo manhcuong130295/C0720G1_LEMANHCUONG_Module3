@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
-    private UserServiceImpl userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");

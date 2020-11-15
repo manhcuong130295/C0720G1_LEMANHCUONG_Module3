@@ -110,10 +110,23 @@ public class UserServlet extends HttpServlet {
             case "sort":
                 sortByName(request,response);
                 break;
+            case "permision":
+
+                addUserPermision(request, response);
+
+                break;
             default:
                 listUser(request, response);
                 break;
         }
+    }
+
+    private void addUserPermision(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User("kien", "kienhoang@gmail.com", "vn");
+
+        int[] permision = {1, 2, 4};
+
+        userService.addUserTransaction(user, permision);
     }
 
     private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {

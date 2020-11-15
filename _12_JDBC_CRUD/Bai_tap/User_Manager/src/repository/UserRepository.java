@@ -17,5 +17,6 @@ public interface UserRepository {
 
     List<User> searchByCountry(String countrySearch);
     List<User> sortByName();
+    public void addUserTransaction(User user, int[] permision);
 
 }

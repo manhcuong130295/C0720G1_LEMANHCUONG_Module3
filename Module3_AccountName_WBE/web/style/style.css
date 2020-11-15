@@ -1,0 +1,13 @@
+.jumbotron{
+    height: 100px;
+}
+.nav{
+    background-color: cornflowerblue;
+}
+.card text-center{
+    position: fixed;
+    margin-bottom: 0px;
+}
+.left-sidebar{
+     background-color: darkgray;
+ }

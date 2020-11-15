@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Module3_AccountName_WBE:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Module3_AccountName_WBE_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Module3_AccountName_WBE/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Module3_AccountName_WBE" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/library/jstl-api-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/library/mysql-connector-java-8.0.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/library/jstl-impl-1.2.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
