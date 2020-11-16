@@ -32,6 +32,22 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void editEmployee(HttpServletRequest request, HttpServletResponse response) {
+        String id=request.getParameter("idUpdate");
+        String fullName = request.getParameter("nameUpdate");
+        String birthDay = request.getParameter("birthdayUpdate");
+        String gender = request.getParameter("genderUpdate");
+        String idCardNumber = request.getParameter("idCardUpdate");
+        String salary = request.getParameter("salaryUpdate");
+        String phone = request.getParameter("phoneUpdate");
+        String email = request.getParameter("emailUpdate");
+        String address =request.getParameter("addressUpdate");
+        String education_degree=request.getParameter("education_degree_name_Update");
+        String position=request.getParameter("positionsUpdate");
+        String division=request.getParameter("divisionUpdate");
+        String userName=request.getParameter("usernameUpdate");
+        Employee employee=new Employee(id,fullName,birthDay,gender,idCardNumber,salary,phone,email,address,education_degree,position,division,userName);
+        employeeService.editEmployeeInformation(employee);
+        listEmployee(request,response);
     }
 
     private void addNewCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -51,6 +67,7 @@ public class EmployeeServlet extends HttpServlet {
         Employee employee=new Employee(id,fullName,birthDay,gender,idCardNumber,salary,phone,email,address,education_degree,position,division,userName);
         employeeService.addNewEmployee(employee);
         listEmployee(request,response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

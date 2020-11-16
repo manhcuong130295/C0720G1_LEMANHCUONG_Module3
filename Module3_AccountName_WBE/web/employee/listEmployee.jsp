@@ -79,7 +79,7 @@
 
                 <td style="collapse: 2 ; text-align: center"><a href="#" class="btn btn-primary " data-toggle="modal"
                                                                 data-target="#modalEdit"
-                                                                onclick="onEdit('${employee.id}','${customer.customerType}','${customer.fullName}','${customer.birthDay}','${customer.gender}','${customer.idCardNumber}','${customer.phone}','${customer.email}','${customer.address}')">
+                                                                onclick="onEdit('${employee.id}','${employee.fullName}','${employee.birthDay}','${employee.gender}}','${employee.idCardNumber}','${employee.salary}','${employee.phone}','${employee.email}','${employee.address}','${employee.education_degree}','${employee.position}','${employee.division}','${employee.userName}')">
 
                     Edit
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor"
@@ -209,11 +209,11 @@
                                 <option value="3">Expert</option>
                                 <option value="4">Supervisor</option>
                                 <option value="5">Manager</option>
-                                <option value="5">Director</option>
+                                <option value="6">Director</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Position</label>
+                            <label>Division</label>
                             <select id="division_name" name="division_name">
                                 <option value="1">: Sale-Marketing</option>
                                 <option value="2">Administrative</option>
@@ -249,58 +249,81 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="/customers?action=edit" method="post">
+                    <form action="/employees?action=edit" method="post">
                         <div class="form-group">
                             <label>Id</label>
-                            <input type="hidden" id="updateId" class="form-control" placeholder="Input Id" name="id">
+                            <input type="hidden" class="form-control" id="idUpdate" name="idUpdate">
                         </div>
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" id="updateFullName" class="form-control" placeholder="Input Full name"
-                                   name="fullName">
+                            <input type="text" class="form-control" placeholder="Input Full name" id="nameUpdate" name="nameUpdate">
                         </div>
                         <div class="form-group">
                             <label>Birth Day</label>
-                            <input type="text" id="updateBirthDay" class="form-control" placeholder="Input Birth Day"
-                                   name="birthDay">
+                            <input type="text" class="form-control" placeholder="Input Birth Day" id="birthdayUpdate" name="birthdayUpdate">
                         </div>
                         <div class="form-group">
                             <label>Gender</label>
-                            <select id="updateGender" name="gender">
-                                <option value="Male" >Male</option>
+                            <select id="genderUpdate" name="genderUpdate">
+                                <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Another">Another</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Id Card Number </label>
-                            <input type="text" id="updateIdCardNumber" class="form-control"
-                                   placeholder="Input Id Card Number" name="idCardNumber">
+                            <input type="text" class="form-control" placeholder="Input Id Card Number" id="idCardUpdate"
+                                   name="idCardUpdate">
+                        </div>
+                        <div class="form-group">
+                            <label>Salary </label>
+                            <input type="text" class="form-control" placeholder="Input Id Card Number" id="salaryUpdate"
+                                   name="salaryUpdate">
                         </div>
                         <div class="form-group">
                             <label>Phone Number </label>
-                            <input type="text" id="updatePhone" class="form-control" placeholder="Input Id Phone Number"
-                                   name="phoneNumber">
+                            <input type="text" class="form-control" placeholder="Input Id Phone Number" id="phoneUpdate"
+                                   name="phoneUpdate">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" id="updateEmail" class="form-control" placeholder="Input Email"
-                                   name="email">
+                            <input type="text" class="form-control" placeholder="Input Email" id="emailUpdate" name="emailUpdate">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" id="updateAddress" class="form-control" placeholder="Input Address"
-                                   name="address">
+                            <input type="text" class="form-control" placeholder="Input Address" id="addressUpdate" name="addressUpdate">
                         </div>
                         <div class="form-group">
-                            <label>Customer Type</label>
-                            <select id="updateType" name="type">
-                                <option value="1">Diamond</option>
-                                <option value="2">Platinum</option>
-                                <option value="3">Gold</option>
-                                <option value="4">Silver</option>
-                                <option value="5">Member</option>
+                            <label>Education Degree </label>
+                            <select id="education_degree_name_Update" name="education_degree_name_Update">
+                                <option value="1">University</option>
+                                <option value="2">College</option>
+                                <option value="3">Intermediate</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <select id="positionsUpdate" name="positionsUpdate">
+                                <option value="1">Receptionist</option>
+                                <option value="2">Staff</option>
+                                <option value="3">Expert</option>
+                                <option value="4">Supervisor</option>
+                                <option value="5">Manager</option>
+                                <option value="6">Director</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Division</label>
+                            <select id="divisionUpdate" name="divisionUpdate">
+                                <option value="1">Sale-Marketing</option>
+                                <option value="2">Administrative</option>
+                                <option value="3">Serve</option>
+                                <option value="4">Manage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" class="form-control" id="usernameUpdate"  name="usernameUpdate">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -338,16 +361,20 @@
     </div>
 </div>
 <script>
-    function onEdit(id, customerType, fullName, birthDay, gender, idCardNumber, phone, email, address) {
-        document.getElementById("updateId").value = id;
-        document.getElementById("updateType").value = customerType;
-        document.getElementById("updateFullName").value = fullName;
-        document.getElementById("updateBirthDay").value = birthDay;
-        document.getElementById("updateGender").value = gender;
-        document.getElementById("updateIdCardNumber").value = idCardNumber;
-        document.getElementById("updatePhone").value = phone;
-        document.getElementById("updateEmail").value = email;
-        document.getElementById("updateAddress").value = address;
+    function onEdit(id, fullName, birthDay, gender,idCardNumber,salary, phone, email, address,education_degree,position,division,userName) {
+        document.getElementById("idUpdate").value = id;
+        document.getElementById("nameUpdate").value = fullName;
+        document.getElementById("birthdayUpdate").value = birthDay;
+        document.getElementById("genderUpdate").value = gender;
+        document.getElementById("idCardUpdate").value = idCardNumber;
+        document.getElementById("salaryUpdate").value = salary;
+        document.getElementById("phoneUpdate").value = phone;
+        document.getElementById("emailUpdate").value = email;
+        document.getElementById("addressUpdate").value = address;
+        document.getElementById("education_degree_name_Update").value = education_degree;
+        document.getElementById("positionsUpdate").value = position;
+        document.getElementById("divisionUpdate").value = division;
+        document.getElementById("usernameUpdate").value = userName;
 
     }
 

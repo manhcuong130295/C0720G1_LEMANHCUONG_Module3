@@ -144,6 +144,7 @@
                         <div class="form-group">
                             <label>Id</label>
                             <input type="text" class="form-control" placeholder="Input Id" name="id">
+                            <small style="color: red; margin-left: 10%; font-size: 100%"><c:if test="${errorIdCus != null}">${errorIdCus}</c:if></small>
                         </div>
                         <div class="form-group">
                             <label>Full Name</label>
@@ -152,6 +153,7 @@
                         <div class="form-group">
                             <label>Birth Day</label>
                             <input type="text" class="form-control" placeholder="Input Birth Day" name="birthDay">
+                            <small style="color: red; margin-left: 10%; font-size: 100%"><c:if test="${errorBirthDay != null}">${errorBirthDay}</c:if></small>
                         </div>
                         <div class="form-group">
                             <label>Gender</label>
@@ -165,15 +167,18 @@
                             <label>Id Card Number </label>
                             <input type="text" class="form-control" placeholder="Input Id Card Number"
                                    name="idCardNumber">
+                            <small style="color: red; margin-left: 10%; font-size: 100%"><c:if test="${errorIdCard != null}">${errorIdCard}</c:if></small>
                         </div>
                         <div class="form-group">
                             <label>Phone Number </label>
                             <input type="text" class="form-control" placeholder="Input Id Phone Number"
                                    name="phoneNumber">
+                            <small style="color: red; margin-left: 10%; font-size: 100%"><c:if test="${errorPhoneNumber != null}">${errorPhoneNumber}</c:if></small>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" placeholder="Input Email" name="email">
+                            <small style="color: red; margin-left: 10%; font-size: 100%"><c:if test="${errorEmail != null}">${errorEmail}</c:if></small>
                         </div>
                         <div class="form-group">
                             <label>Address</label>
@@ -301,6 +306,7 @@
         </div>
     </div>
 </div>
+<input type="hidden" name="hasError" id="hasError" value="${hasError}">
 <script>
     function onEdit(id, customerType, fullName, birthDay, gender, idCardNumber, phone, email, address) {
         document.getElementById("updateId").value = id;
@@ -320,6 +326,13 @@
     }
 </script>
 
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
 <script>
     $(document).ready(function () {
         $('#tableContract').dataTable({
@@ -328,12 +341,10 @@
             "pageLength": 5
         });
     });
-</script>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        if($("#hasError").val() === "false"){
+            $("#modelCreate").modal('show');
+        }
 
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+</script>
 </body>
 </html>
